@@ -1,0 +1,60 @@
+{% extends 'layout.html'%}
+{% block title %}
+<title>Show Person</title>
+{% endblock %}
+{% block content %}
+<style>
+    .success_message {
+    background:#4DB6AC;
+    color:#fff;
+    border-radius:5px;
+}
+</style>
+<div class="container">
+    <div class="row">
+        <a href="/products/postPersonMF"
+           class="btn btn-sm btn-primary ml-auto m-2 p-2">Add Person</a>
+        <br/>
+        <div class="card card-body">
+            <form class="form" method="GET">
+                {{ person_filter.form}}
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+        <div class="card">
+            {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <h6 class="success_message py-3 px-1 my-2 text-center">{{message}}</h6>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for person in person %}
+            <tr>
+                <td>{{person.firstname}}</td>
+                <td>{{person.lastname}}</td>
+                <td>{{person.email}}</td>
+                <td>{{person.phone}}</td>
+                <td><a href="/products/updatePersonMF/{{person.id}}"
+                       class="btn btn-primary">Edit</a>
+                <a href="/products/deletePersonMF/{{person.id}}"
+                   onclick="return confirm('Are you sure want to delete?')"
+                   class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

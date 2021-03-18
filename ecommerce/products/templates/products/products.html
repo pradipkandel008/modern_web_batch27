@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+<title>Products</title>
+{% include 'products/header.html' %}
+<link rel="stylesheet"
+      href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>THis is products page</h1>
+
+<ul>
+    {% for item in products %}
+    <li>
+       {{item.name}}
+        {{item.price}}
+    </li>
+    {% endfor %}
+</ul>
+<img class="rounded-circle img-fluid" src="{% static 'images/image.jpg' %}">
+{% endblock %}
+

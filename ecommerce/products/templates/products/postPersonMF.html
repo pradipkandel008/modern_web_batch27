@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load bootstrap %}
+{% block title %}
+<title>Post Person</title>
+{% endblock%}
+
+{% block content %}
+<style>
+    .error_message {
+    background:red;
+    color:#fff;
+    border-radius:5px;
+}
+.help-block{
+color:red;
+}
+</style>
+<div class="container">
+    <div class="row">
+
+        <div class="card col-md-8 p-3 shadow-lg m-2">
+            {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <h6 class="error_message py-3 px-1 my-2 text-center">{{message}}</h6>
+            {% endif %}
+            {% endfor %}
+            <form class="form" method="POST">
+                {% csrf_token %}
+                {{ form | bootstrap_horizontal }}
+                <button type="submit"
+                        class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Enter first name';
+    form_fields[2].placeholder = 'Enter last name';
+    form_fields[3].placeholder = 'Enter email address';
+    form_fields[4].placeholder = 'Enter phone number';
+
+    for (var field in form_fields){
+    field.className += 'form-control my-2'
+    }
+</script>
+{% endblock %}

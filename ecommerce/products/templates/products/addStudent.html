@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block title %}
+<title>Add Student</title>
+{% endblock %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+        <label for="batch">Batch</label>
+        <input type="text" class="form-control" id="batch" name="batch" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+        <label for="image_url">Image URL</label>
+        <input type="text" class="form-control" id="image_url" name="image_url" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" name="category">
+            <option>Bsc(Hons) Computing</option>
+            <option>Bsc (Hons) Ethical Hacking</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
+

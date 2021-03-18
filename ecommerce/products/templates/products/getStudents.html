@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block title %}
+<title>Get Student</title>
+{% endblock %}
+{% block content %}
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th>Firtname</th>
+        <th>Lastname</th>
+        <th>Batch</th>
+        <th>Category</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for student in students %}
+    <tr>
+        <td>{{student.firstname}}</td>
+        <td>{{student.lastname}}</td>
+        <td>{{student.batch}}</td>
+        <td>{{student.category}}</td>
+        <td><img src="{{student.image_url}}" alt="student_image" width="100"></td>
+        <td><a href="/products/updateStudent/{{student.id}}"
+               class="btn btn-primary"></a>
+        <a href="/products/deleteStudent/{{student.id}}"
+           class="btn btn-danger"></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
